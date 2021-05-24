@@ -6,5 +6,5 @@ from os import path
 
 def load_assets():
     assets = {}
-    assets['background'] = pygame.image.load('src/assets/images/samplebackground.png').convert()
+    assets['background'] = pygame.image.load('src/assets/images/background.png').convert()
     return assets
