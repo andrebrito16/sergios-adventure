@@ -10,12 +10,37 @@ BACKGROUND_IMG = 'background_img'
 from config import HEIGHT, WIDTH, FPS, game, world_speed
 from assets import load_assets
 
+pygame.init()
+TELA = pygame.display.set_mode((WIDTH, HEIGHT))
 
+class Player(pygame.sprite.Sprite):
 
+    def __init__(self, assets, posx):
+        pygame.sprite.Sprite.__init__(self)
+
+        self.image = assets['player']
+        self.mask = pygame.mask.from_surface(self.image)
+        self.rect = self.image.get_rect()
+        self.rect.centery = 429
+        self.rect.x = posx
+        self.scale = 3
+        self.assets = assets
+       
+    # Método update
+
+all_sprites = pygame.sprite.Group()
 def tela_jogo(screen):
+    
+    groups = {}
+    groups['all_sprites'] = all_sprites
+    assets = load_assets()
+
+    all_sprites.add(Player(assets, 250))
+    lista_sprites = [all_sprites]
+    
     clock = pygame.time.Clock()
 
-    assets = load_assets()
+    
     background = assets['background']
     background = pygame.transform.scale(background, (WIDTH, HEIGHT))
     background_rect = background.get_rect()
@@ -40,9 +65,11 @@ def tela_jogo(screen):
         background_rect2 = background_rect.copy()
         background_rect2.x += background_rect2.width
         screen.blit(background, background_rect2)
-
-        pygame.display.flip()
-    
+        
+        all_sprites.update()
+        all_sprites.draw(TELA)
+        pygame.display.update()
+        
 
         screen.fill((255, 255, 255))  # Preenche com a cor branca
 
