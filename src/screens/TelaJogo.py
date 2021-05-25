@@ -1,4 +1,6 @@
 import sys
+import random
+from time import sleep
 from os import path
 import pygame
 
@@ -22,11 +24,20 @@ class Barrel(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = 1350
         self.rect.y = 380
-        self.speedx  = -3
+        self.speedx  = -(random.randint(3, 6))
+
     
     def update(self):
         self.rect.x += self.speedx
 
+        if self.rect.x < -100:
+            self.kill()
+GROUND = HEIGHT * 5//6 - 30
+GRAVITY = 1.5
+JUMP_SIZE = 30
+STILL = 0
+JUMPING = 1
+FALLING = 2
 class Player(pygame.sprite.Sprite):
 
     def __init__(self, assets, posx):
@@ -37,9 +48,27 @@ class Player(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.centery = 429
         self.rect.x = posx
-        self.scale = 3
+        self.state = STILL
+        self.speedy = 0
        
     # Método update
+    def update(self):
+        self.speedy += GRAVITY
+
+        if self.speedy > 0:
+            self.state = FALLING
+        self.rect.y += self.speedy
+
+        if self.rect.bottom > GROUND:
+            self.rect.bottom = GROUND
+            self.speedy = 0
+            self.state = STILL
+        
+    def jump(self):
+        if self.state == STILL:
+            self.speedy -= JUMP_SIZE
+            self.state = JUMPING
+
 
 
 all_sprites = pygame.sprite.Group()
@@ -47,40 +76,41 @@ all_barrels = pygame.sprite.Group()
 groups = {}
 groups['all_sprites'] = all_sprites 
 
-
+player_speedy = 10
 def tela_jogo(screen):
     assets = load_assets()
     
-    barrel1 = Barrel(assets)
-    all_barrels.add(barrel1)
+    barrel_last = Barrel(assets)
+    all_barrels.add(barrel_last)
     
-
-    all_sprites.add(Player(assets, 250))
+    player = Player(assets, 250)
+    all_sprites.add(player)
     lista_sprites = [all_sprites]
     
     clock = pygame.time.Clock()
 
-    
     background = assets['background']
     background = pygame.transform.scale(background, (WIDTH, HEIGHT))
     background_rect = background.get_rect()
 
     estado = game
-    barrel1.speedx
+
     while estado:
         clock.tick(FPS)
-        if barrel1.rect.x < 400:
-            barrel2 = Barrel(assets)
-
-            all_barrels.add(barrel2)
+        if barrel_last.rect.x < 1350-150 and random.randint(1,100) == 2: 
+            barrel_last = Barrel(assets)
+            barrel_last.speedx = -(random.randint(1, 6))
+            all_barrels.add(barrel_last)
 
         # ----- Trata eventos
         for event in pygame.event.get():
             # ----- Verifica consequências
             if event.type == pygame.QUIT:
                 estado = False
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    player.jump()
 
-        
         background_rect.x += world_speed
         if background_rect.right < 0:
             background_rect.x += background_rect.width
