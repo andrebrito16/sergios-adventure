@@ -15,4 +15,4 @@ pygame.display.set_caption('Sérgio e as Ovelhas Radioativas')
 try:
     tela_jogo(TELA)
 finally:
-    pygame.quit() 
+    pygame.quit()

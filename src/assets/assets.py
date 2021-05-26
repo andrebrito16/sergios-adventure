@@ -19,4 +19,5 @@ def load_assets():
     # assets['player'] = pygame.transform.scale(player, (150, 150))
     barrel = pygame.image.load('src/assets/images/barril.png').convert_alpha()
     assets['barrel'] = pygame.transform.scale(barrel, (58, 98))
+    assets["score_font"] = pygame.font.Font('src/assets/fonts/PressStart2P.ttf', 28)
     return assets
