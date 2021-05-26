@@ -10,7 +10,7 @@ def load_assets():
     for i in range(4):
         filename = f'src/assets/images/sergio{i}.png'
         image = pygame.image.load(filename).convert_alpha()
-        image = pygame.transform.scale(image, (150, 150))
+        image = pygame.transform.scale(image, (87, 138))
         player_anim.append(image)
     assets['player'] = player_anim
 
@@ -18,5 +18,5 @@ def load_assets():
     assets['background'] = pygame.image.load('src/assets/images/background.png').convert()
     # assets['player'] = pygame.transform.scale(player, (150, 150))
     barrel = pygame.image.load('src/assets/images/barril.png').convert_alpha()
-    assets['barrel'] = pygame.transform.scale(barrel, (100, 100))
+    assets['barrel'] = pygame.transform.scale(barrel, (58, 98))
     return assets

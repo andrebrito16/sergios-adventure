@@ -2,7 +2,8 @@ WIDTH = 1325
 HEIGHT = 620
 
 FPS = 60
-world_speed = -3
+world_speed = -5
+lives = 3
 
 # Cores principais
 color_white = (255, 255, 255)

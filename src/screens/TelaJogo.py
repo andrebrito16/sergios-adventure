@@ -20,13 +20,12 @@ TELA = pygame.display.set_mode((WIDTH, HEIGHT))
 class Barrel(pygame.sprite.Sprite):
     def __init__(self, assets):
         pygame.sprite.Sprite.__init__(self)
-
         self.image = assets['barrel']
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
         self.rect.x = 1350
         self.rect.y = 380
-        self.speedx  = -(random.randint(3, 6))
+        self.speedx  = -(random.randint(6, 8))
 
     
     def update(self):
@@ -34,8 +33,11 @@ class Barrel(pygame.sprite.Sprite):
 
         if self.rect.x < -100:
             self.kill()
+
+        
+
 GROUND = HEIGHT * 5//6 - 30
-GRAVITY = 1.5
+GRAVITY = 1.2
 JUMP_SIZE = 30
 STILL = 0
 JUMPING = 1
@@ -54,7 +56,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.x = posx
         self.state = STILL
         self.last_update = pygame.time.get_ticks()
-        self.frame_ticks = 50
+        self.frame_ticks = 20
         self.speedy = 0
        
     # Método update
@@ -101,6 +103,7 @@ groups['all_sprites'] = all_sprites
 
 player_speedy = 10
 def tela_jogo(screen):
+    lives = 3
     assets = load_assets()
     
     barrel_last = Barrel(assets)
@@ -120,9 +123,9 @@ def tela_jogo(screen):
 
     while estado:
         clock.tick(FPS)
-        if barrel_last.rect.x < 1350-150 and random.randint(1,100) == 2: 
+        if barrel_last.rect.x < 1325-400 and random.randint(1,100) == 2: 
             barrel_last = Barrel(assets)
-            barrel_last.speedx = -(random.randint(1, 6))
+            barrel_last.speedx = -(random.randint(6, 8))
             all_barrels.add(barrel_last)
 
         # ----- Trata eventos
@@ -143,6 +146,18 @@ def tela_jogo(screen):
         background_rect2 = background_rect.copy()
         background_rect2.x += background_rect2.width
         screen.blit(background, background_rect2)
+
+        hits = pygame.sprite.spritecollide(player, all_barrels, True)
+
+        if len(hits) > 0:
+            lives -= 1
+        if lives == 0:
+            estado = False
+
+        # hits_barrel = pygame.sprite.spritecollide(barrel_last, all_barrels, True)
+       
+            
+        
         
         all_sprites.update()
         all_barrels.update()
