@@ -15,6 +15,8 @@ from assets import load_assets
 pygame.init()
 TELA = pygame.display.set_mode((WIDTH, HEIGHT))
 
+
+
 class Barrel(pygame.sprite.Sprite):
     def __init__(self, assets):
         pygame.sprite.Sprite.__init__(self)
@@ -43,16 +45,37 @@ class Player(pygame.sprite.Sprite):
     def __init__(self, assets, posx):
         pygame.sprite.Sprite.__init__(self)
 
-        self.image = assets['player']
+        self.player = assets['player']
+        self.frame = 0
+        self.image = self.player[self.frame]
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
         self.rect.centery = 429
         self.rect.x = posx
         self.state = STILL
+        self.last_update = pygame.time.get_ticks()
+        self.frame_ticks = 50
         self.speedy = 0
        
     # Método update
     def update(self):
+        now = pygame.time.get_ticks()
+        elapsed_ticks = now - self.last_update
+        if elapsed_ticks > self.frame_ticks:
+            # Marca o tick da nova imagem.
+            self.last_update = now
+            # Avança um quadro.
+            self.frame += 1
+
+            if self.frame == len(self.player):
+                self.frame = 0
+            else:
+                center = self.rect.center
+                self.image = self.player[self.frame]
+                self.mask = pygame.mask.from_surface(self.image)
+                self.rect = self.image.get_rect()
+                self.rect.center = center
+
         self.speedy += GRAVITY
 
         if self.speedy > 0:
