@@ -9,7 +9,7 @@ sys.path.insert(1, 'src/assets')
 img_dir = path.join(path.dirname(__file__), 'img')
 print(img_dir)
 BACKGROUND_IMG = 'background_img'
-from config import HEIGHT, WIDTH, FPS, game, world_speed
+from config import HEIGHT, WIDTH, FPS, game, world_speed, TELA_FINAL, GAME, QUIT
 from assets import load_assets
 
 pygame.init()
@@ -104,9 +104,8 @@ groups['all_sprites'] = all_sprites
 
 player_speedy = 10
 
-def tela_jogo(screen):
+def tela_jogo(screen, lives):
     score = 0
-    lives = 3
     assets = load_assets()
     
     barrel_last = Barrel(assets)
@@ -122,9 +121,9 @@ def tela_jogo(screen):
     background = pygame.transform.scale(background, (WIDTH, HEIGHT))
     background_rect = background.get_rect()
 
-    estado = game
+    estado = GAME
 
-    while estado:
+    while estado != TELA_FINAL and estado != QUIT:
         score += 1
         clock.tick(FPS)
         if barrel_last.rect.x < 1325-400 and random.randint(1,100) == 2: 
@@ -136,7 +135,7 @@ def tela_jogo(screen):
         for event in pygame.event.get():
             # ----- Verifica consequências
             if event.type == pygame.QUIT:
-                estado = False
+                estado = QUIT
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
                     player.jump()
@@ -156,7 +155,8 @@ def tela_jogo(screen):
         if len(hits) > 0:
             lives -= 1
         if lives == 0:
-            estado = False
+            estado = TELA_FINAL
+            player.kill()
         if score % 1000 == 0:
             lives += 1
 

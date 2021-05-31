@@ -14,3 +14,9 @@ color_blue = (0, 0, 255)
 
 
 game = True
+
+# Estado
+QUIT = 0
+TELA_INICIAL = 1
+GAME = 2
+TELA_FINAL = 3
