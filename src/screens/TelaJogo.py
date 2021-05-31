@@ -101,8 +101,11 @@ all_barrels = pygame.sprite.Group()
 groups = {}
 groups['all_sprites'] = all_sprites 
 
+
 player_speedy = 10
+
 def tela_jogo(screen):
+    score = 0
     lives = 3
     assets = load_assets()
     
@@ -122,6 +125,7 @@ def tela_jogo(screen):
     estado = game
 
     while estado:
+        score += 1
         clock.tick(FPS)
         if barrel_last.rect.x < 1325-400 and random.randint(1,100) == 2: 
             barrel_last = Barrel(assets)
@@ -153,10 +157,22 @@ def tela_jogo(screen):
             lives -= 1
         if lives == 0:
             estado = False
+        if score % 1000 == 0:
+            lives += 1
 
         # hits_barrel = pygame.sprite.spritecollide(barrel_last, all_barrels, True)
        
-            
+        # Desenhando o score
+        text_surface = assets['score_font'].render("{:08d}".format(score), True, (255, 255, 0))
+        text_rect = text_surface.get_rect()
+        text_rect.midtop = (WIDTH / 2,  10)
+        TELA.blit(text_surface, text_rect)
+
+        # Desenhando as vidas
+        text_surface = assets['score_font'].render(chr(9829) * lives, True, (255, 0, 0))
+        text_rect = text_surface.get_rect()
+        text_rect.bottomleft = (10, HEIGHT - 10)
+        TELA.blit(text_surface, text_rect)
         
         
         all_sprites.update()
