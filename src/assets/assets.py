@@ -20,4 +20,5 @@ def load_assets():
     barrel = pygame.image.load('src/assets/images/barril.png').convert_alpha()
     assets['barrel'] = pygame.transform.scale(barrel, (58, 98))
     assets["score_font"] = pygame.font.Font('src/assets/fonts/PressStart2P.ttf', 28)
+    assets["telainicial"] = pygame.image.load('src/assets/images/tela_inicial.png').convert()
     return assets
