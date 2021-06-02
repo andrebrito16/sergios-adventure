@@ -27,3 +27,8 @@
 - Faça o download da biblioteca Pygame;
 - Clone o repositório;
 - Acesse o jogo dentro do conteúdo do repositório;
+
+## Referências
+Alguns materiais foram usados como referência para o desenvolvimento do jogo. São eles:
+- [Academia Python - Insper](https://dessoft.insper-comp.com.br/conteudo/pygame)
+- [Pygame Snippets pelos profesores Andrew Kurauchi e Luciano Soares](https://github.com/Insper/pygame-snippets)
