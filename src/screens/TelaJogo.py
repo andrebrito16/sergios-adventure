@@ -105,8 +105,14 @@ groups['all_sprites'] = all_sprites
 player_speedy = 10
 
 def tela_jogo(screen, lives):
-    score = 0
     assets = load_assets()
+    
+    pygame.mixer.music.load('src/assets/sounds/trilha.wav')
+    pygame.mixer.music.set_volume(0.4)
+
+    pygame.mixer.music.play(loops = -1)
+    score = 0
+    
     
     barrel_last = Barrel(assets)
     all_barrels.add(barrel_last)
@@ -122,7 +128,7 @@ def tela_jogo(screen, lives):
     background_rect = background.get_rect()
 
     estado = GAME
-
+    pygame.mixer.music.play(loops=-1)
     while estado != TELA_FINAL and estado != QUIT:
         score += 1
         clock.tick(FPS)
@@ -138,6 +144,7 @@ def tela_jogo(screen, lives):
                 estado = QUIT
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
+                    assets['jump'].play()
                     player.jump()
 
         background_rect.x += world_speed
@@ -153,8 +160,10 @@ def tela_jogo(screen, lives):
         hits = pygame.sprite.spritecollide(player, all_barrels, True)
 
         if len(hits) > 0:
+            assets['barrelhit'].play()
             lives -= 1
         if lives == 0:
+            assets['gameover'].play()
             estado = TELA_FINAL
             player.kill()
         if score % 1000 == 0:

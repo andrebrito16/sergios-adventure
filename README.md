@@ -26,4 +26,10 @@
 - Instale Python 3X (versão mínima requisitada);
 - Faça o download da biblioteca Pygame;
 - Clone o repositório;
-- Acesse o jogo dentro do conteúdo do repositório;
+- Entre na pasta do jogo;
+- Rode o arquivo game.py usando Python 3
+
+## Referências
+Alguns materiais foram usados como referência para o desenvolvimento do jogo. São eles:
+- [Academia Python - Insper](https://dessoft.insper-comp.com.br/conteudo/pygame)
+- [Pygame Snippets pelos professores Andrew Kurauchi e Luciano Soares](https://github.com/Insper/pygame-snippets)
