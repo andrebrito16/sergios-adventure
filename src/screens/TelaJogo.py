@@ -94,8 +94,22 @@ class Player(pygame.sprite.Sprite):
             self.speedy -= JUMP_SIZE
             self.state = JUMPING
 
+class Sheep(pygame.sprite.Sprite):
+    def __init__(self, assets, posx):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = assets['sheep']
+        self.mask = pygame.mask.from_surface(self.image)
+        self.rect = self.image.get_rect()
+        self.rect.centery = 429
+        self.rect.x = posx
 
+    def update(self):
+        self.rect.centery = (random.randint(429, 439))
 
+    
+    
+
+all_sheep = pygame.sprite.Group()
 all_sprites = pygame.sprite.Group()
 all_barrels = pygame.sprite.Group()
 groups = {}
@@ -114,6 +128,10 @@ def tela_jogo(screen, lives):
     score = 0
     
     
+    for counter in range(5):
+        sheep = Sheep(assets, counter*20)
+        all_sheep.add(sheep)
+
     barrel_last = Barrel(assets)
     all_barrels.add(barrel_last)
     
@@ -183,11 +201,12 @@ def tela_jogo(screen, lives):
         text_rect.bottomleft = (10, HEIGHT - 10)
         TELA.blit(text_surface, text_rect)
         
-        
+        all_sheep.update()
         all_sprites.update()
         all_barrels.update()
         all_sprites.draw(TELA)
         all_barrels.draw(TELA)
+        all_sheep.draw(TELA)
         pygame.display.update()
         
 
