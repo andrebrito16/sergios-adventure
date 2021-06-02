@@ -22,4 +22,6 @@ def load_assets():
     assets["score_font"] = pygame.font.Font('src/assets/fonts/PressStart2P.ttf', 28)
     assets["telainicial"] = pygame.image.load('src/assets/images/tela_inicial.png').convert()   
     assets['telafinal'] = pygame.image.load('src/assets/images/tela_final.png').convert()
+    sheep = pygame.image.load('src/assets/images/ovelha.png').convert_alpha()
+    assets['sheep'] = pygame.transform.scale(sheep, (117, 108))
     return assets
