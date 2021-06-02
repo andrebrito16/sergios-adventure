@@ -25,7 +25,7 @@ class Barrel(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = 1350
         self.rect.y = 380
-        self.speedx  = -(random.randint(6, 8))
+        self.speedx  = -(6)
 
     
     def update(self):
@@ -128,7 +128,7 @@ def tela_jogo(screen, lives):
         clock.tick(FPS)
         if barrel_last.rect.x < 1325-400 and random.randint(1,100) == 2: 
             barrel_last = Barrel(assets)
-            barrel_last.speedx = -(random.randint(6, 8))
+            barrel_last.speedx = -(6+score*0.0025)
             all_barrels.add(barrel_last)
 
         # ----- Trata eventos
