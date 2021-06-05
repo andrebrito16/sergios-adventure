@@ -1,31 +1,31 @@
+
 import sys
+from os import path
 import pygame
-
 sys.path.insert(1, 'src/config')
+sys.path.insert(1, 'src/screens')
+sys.path.insert(1, 'src/assets')
+from config import HEIGHT, WIDTH, FPS, game, world_speed, TELA_INICIAL, QUIT, GAME, TELA_FINAL
+from src.screens.TelaInicio import tela_inicial
+from src.screens.TelaJogo import tela_jogo
+from src.screens.TelaFinal import tela_final
 
-from config import HEIGH, WIDTH, FPS, game
 
-# Gera a tela do jogo
 pygame.init()
-TELA = pygame.display.set_mode((WIDTH, HEIGH))
+pygame.mixer.init()
+
+#tela principal do jogo
+TELA = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Sérgio e as Ovelhas Radioativas')
 
+estado = TELA_INICIAL
 
-# Rotina do ícone
-estado = game
+while estado != QUIT:
+    if estado == TELA_INICIAL:
+        estado = tela_inicial(TELA)
+    if estado == GAME:
+        estado = tela_jogo(TELA, 3)
+    if estado == TELA_FINAL:
+        estado = tela_final(TELA)
 
-while estado:
-    # ----- Trata eventos
-    for event in pygame.event.get():
-        # ----- Verifica consequências
-        if event.type == pygame.QUIT:
-            estado = False
-
-    # ----- Gera saídas
-    TELA.fill((255, 255, 255))  # Preenche com a cor branca
-
-    # ----- Atualiza estado do jogo
-    pygame.display.update()  # Mostra o novo frame para o jogador
-
-# ===== Finalização =====
-pygame.quit()  # Função do PyGame que finaliza os recursos utilizados
+pygame.quit()
