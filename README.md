@@ -34,6 +34,7 @@
 - Instale Python 3X (versão mínima requisitada);
 - Faça o download da biblioteca Pygame;
 - Clone o repositório;
+- **Observação: Baixe os arquivos na sua área de trabalho para evitar conflitos**;
 - Entre na pasta do jogo;
 - Rode o arquivo game.py usando Python 3
 
