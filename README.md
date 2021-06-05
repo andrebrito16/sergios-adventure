@@ -9,16 +9,17 @@
 
 **Metas:**
 -
-- [ ] Escrita conjunta do código para o jogo
-- [ ] União dos códigos no GitHub por meio de diferentes commits e _branches_ 
-- [ ] Distribuição dos afazeres **semanalmemte**
-- [ ] Adição do background
-- [ ] Criação do personagem + mecânica do salto
-- [ ] Criação dos obstáculos (barris) + mecânica de geração aleatória com velocidades diferenciadas
-- [ ] Inclui a questão da colisão + kill do personagem
-- [ ] Adiciona o contador de pontos e vidas + esquema de geração de novas vidas
-- [ ] Adição das telas de inicio e final
-- [ ] Adição da animação das ovelhas correndo 
+- [X] Escrita conjunta do código para o jogo
+- [X] União dos códigos no GitHub por meio de diferentes commits e _branches_ 
+- [X] Distribuição dos afazeres **semanalmemte**
+- [X] Adição do background
+- [X] Criação do personagem + mecânica do salto
+- [X] Criação dos obstáculos (barris) + mecânica de geração aleatória com velocidades diferenciadas
+- [X] Inclui a questão da colisão + kill do personagem
+- [X] Adiciona o contador de pontos e vidas + esquema de geração de novas vidas
+- [X] Adição das telas de inicio e final
+- [X] Adição da animação das ovelhas correndo 
+- [X] Adição dos efeitos sonoros do jogo
 
 **Descrição:**
 -
