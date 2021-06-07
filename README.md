@@ -40,3 +40,6 @@
 Alguns materiais foram usados como referência para o desenvolvimento do jogo. São eles:
 - [Academia Python - Insper](https://dessoft.insper-comp.com.br/conteudo/pygame)
 - [Pygame Snippets pelos professores Andrew Kurauchi e Luciano Soares](https://github.com/Insper/pygame-snippets)
+
+## Gif do projeto
+<img src="jogo_apresentacao.gif">

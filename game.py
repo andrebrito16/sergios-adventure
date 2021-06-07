@@ -2,7 +2,7 @@
 import sys
 from os import path
 import pygame
-sys.path.insert(1, 'config')
+sys.path.insert(1, 'config') 
 sys.path.insert(1, 'screens')
 sys.path.insert(1, 'assets')
 from config import HEIGHT, WIDTH, FPS, game, world_speed, TELA_INICIAL, QUIT, GAME, TELA_FINAL
@@ -16,7 +16,7 @@ pygame.mixer.init()
 
 #tela principal do jogo
 TELA = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption('Sérgio e as Ovelhas Radioativas')
+pygame.display.set_caption("Sérgio's Adventure: Escape from Cumbria")
 
 estado = TELA_INICIAL
 
