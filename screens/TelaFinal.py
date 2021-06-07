@@ -4,8 +4,8 @@ from time import sleep
 from os import path
 import pygame
 
-sys.path.insert(1, 'src/config')
-sys.path.insert(1, 'src/assets')
+sys.path.insert(1, 'config')
+sys.path.insert(1, 'assets')
 img_dir = path.join(path.dirname(__file__), 'img')
 print(img_dir)
 BACKGROUND_IMG = 'background_img'

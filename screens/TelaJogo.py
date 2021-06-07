@@ -4,8 +4,8 @@ from time import sleep
 from os import path
 import pygame
 
-sys.path.insert(1, 'src/config')
-sys.path.insert(1, 'src/assets')
+sys.path.insert(1, 'config')
+sys.path.insert(1, 'assets')
 img_dir = path.join(path.dirname(__file__), 'img')
 print(img_dir)
 BACKGROUND_IMG = 'background_img'
@@ -121,7 +121,7 @@ player_speedy = 10
 def tela_jogo(screen, lives):
     assets = load_assets()
     
-    pygame.mixer.music.load('src/assets/sounds/trilha.wav')
+    pygame.mixer.music.load('assets/sounds/trilha.wav')
     pygame.mixer.music.set_volume(0.4)
 
     pygame.mixer.music.play(loops = -1)
