@@ -27,7 +27,7 @@
 
 ###### A catástrofe de Chernobyl resultou em inúmeros efeitos e eventos que marcaram e humanidade em variadas maneiras. Um deles foi a contaminação de pastos nos condados do norte da Inglaterra; que posteriormente resultou na contaminação radioativa de rebanhos lá criados.
 
-###### Nesta versão da história, exploramos as aventuras de Sergio, um cientista social que nessa edição tem como objetivo **percorrer o máximo possível do Condado de Cumbria**. Porém em seu percurso, Sérgio encontrará inúmeros obstáculos incluindio barris de descarte radioativo, nuvens carregadas de isótopos de Césio e um rebanho de ovelhas radioativas nervosas com a ignorância e recusa de _expertise_ por parte dos cientistas ingleses. 
+###### Nesta versão da história, exploramos as aventuras de Sergio, um cientista social que nessa edição tem como objetivo **percorrer o máximo possível do Condado de Cumbria**. Porém em seu percurso, Sérgio encontrará inúmeros obstáculos incluindo barris de descarte radioativo e um rebanho de ovelhas radioativas nervosas com a ignorância e recusa de _expertise_ por parte dos cientistas ingleses. 
 
 **Acesso:**
 -
@@ -45,3 +45,5 @@ Alguns materiais foram usados como referência para o desenvolvimento do jogo. S
 
 ## Gif do projeto
 <img src="jogo_apresentacao.gif">
+
+## [Vídeo de demonstração do projeto](https://www.youtube.com/watch?v=Iv07d2y_5w8)
