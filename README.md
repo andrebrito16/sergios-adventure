@@ -29,6 +29,13 @@
 
 ###### Nesta versão da história, exploramos as aventuras de Sergio, um cientista social que nessa edição tem como objetivo **percorrer o máximo possível do Condado de Cumbria**. Porém em seu percurso, Sérgio encontrará inúmeros obstáculos incluindo barris de descarte radioativo e um rebanho de ovelhas radioativas nervosas com a ignorância e recusa de _expertise_ por parte dos cientistas ingleses. 
 
+**Regras:**
+-
+- Objetivo: não ser atingido pelos barris radioativos e correr pelo maior tempo possível
+- Pressionar a tecla de espaço para saltar
+- A cada 1000 pontos, uma vida é acrescida à sua contagem
+- Conforme a corrida avança, os barris começam a surgir em velocidades e frequências maiores
+
 **Acesso:**
 -
 - Instale Python 3X (versão mínima requisitada);
