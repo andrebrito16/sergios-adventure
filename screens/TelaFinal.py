@@ -1,6 +1,4 @@
 import sys
-import random
-from time import sleep
 from os import path
 import pygame
 
@@ -9,7 +7,7 @@ sys.path.insert(1, 'assets')
 img_dir = path.join(path.dirname(__file__), 'img')
 print(img_dir)
 BACKGROUND_IMG = 'background_img'
-from config import HEIGHT, WIDTH, FPS, game, world_speed, TELA_FINAL, QUIT, GAME
+from config import HEIGHT, WIDTH, FPS, TELA_FINAL, QUIT, GAME
 from assets import load_assets
 
 pygame.init()

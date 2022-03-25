@@ -1,11 +1,9 @@
 import pygame
-import random
-from os import path
 import sys 
 sys.path.insert(1,'config')
 sys.path.insert(1, 'assets')
 
-from config import HEIGHT, WIDTH, FPS, game, world_speed, TELA_INICIAL, QUIT, GAME
+from config import HEIGHT, WIDTH, FPS, TELA_INICIAL, QUIT, GAME
 from assets import load_assets
 pygame.init()
 

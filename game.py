@@ -1,11 +1,10 @@
 
 import sys
-from os import path
 import pygame
 sys.path.insert(1, 'config') 
 sys.path.insert(1, 'screens')
 sys.path.insert(1, 'assets')
-from config import HEIGHT, WIDTH, FPS, game, world_speed, TELA_INICIAL, QUIT, GAME, TELA_FINAL
+from config import HEIGHT, WIDTH, TELA_INICIAL, QUIT, GAME, TELA_FINAL
 from screens.TelaInicio import tela_inicial
 from screens.TelaJogo import tela_jogo
 from screens.TelaFinal import tela_final

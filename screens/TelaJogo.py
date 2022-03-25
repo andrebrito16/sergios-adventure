@@ -1,7 +1,7 @@
-import sys
 import random
-from time import sleep
+import sys
 from os import path
+
 import pygame
 
 sys.path.insert(1, 'config')
@@ -9,13 +9,11 @@ sys.path.insert(1, 'assets')
 img_dir = path.join(path.dirname(__file__), 'img')
 print(img_dir)
 BACKGROUND_IMG = 'background_img'
-from config import HEIGHT, WIDTH, FPS, game, world_speed, TELA_FINAL, GAME, QUIT
 from assets import load_assets
+from config import FPS, GAME, HEIGHT, QUIT, TELA_FINAL, WIDTH, world_speed
 
 pygame.init()
 TELA = pygame.display.set_mode((WIDTH, HEIGHT))
-
-
 
 class Barrel(pygame.sprite.Sprite):
     def __init__(self, assets):
