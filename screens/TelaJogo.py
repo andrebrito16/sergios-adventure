@@ -2,11 +2,12 @@ import random
 from os import path
 import pygame
 from utils.insert_paths import insert_paths_for_game
+from utils.setup_pygame import setup
 insert_paths_for_game()
 from assets import load_assets
 from config import FPS, GAME, HEIGHT, QUIT, TELA_FINAL, WIDTH, world_speed
 
-pygame.init()
+setup()
 
 img_dir = path.join(path.dirname(__file__), 'img')
 BACKGROUND_IMG = 'background_img'

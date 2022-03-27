@@ -1,10 +1,10 @@
 import pygame
 from config import *
 import sys
-
+from utils.setup_pygame import setup
 sys.path.insert(1, 'config')
-pygame.init()
-pygame.mixer.init()
+
+setup()
 
 def load_assets():  
     assets = {}
