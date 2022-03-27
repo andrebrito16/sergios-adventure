@@ -1,11 +1,10 @@
 import pygame
-import sys
-sys.path.insert(1, 'config')
 from config import *
-from os import path
+import sys
+from utils.setup_pygame import setup
+sys.path.insert(1, 'config')
 
-pygame.init()
-pygame.mixer.init()
+setup()
 
 def load_assets():  
     assets = {}
@@ -16,10 +15,7 @@ def load_assets():
         image = pygame.transform.scale(image, (87, 138))
         player_anim.append(image)
     assets['player'] = player_anim
-
-    # player = pygame.image.load('src/assets/images/sergio.png').convert_alpha()
     assets['background'] = pygame.image.load('assets/images/background.png').convert()
-    # assets['player'] = pygame.transform.scale(player, (150, 150))
     barrel = pygame.image.load('assets/images/barril.png').convert_alpha()
     assets['barrel'] = pygame.transform.scale(barrel, (58, 98))
     assets["score_font"] = pygame.font.Font('assets/fonts/PressStart2P.ttf', 28)

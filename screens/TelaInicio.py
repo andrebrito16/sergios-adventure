@@ -1,13 +1,11 @@
 import pygame
-import random
-from os import path
-import sys 
-sys.path.insert(1,'config')
-sys.path.insert(1, 'assets')
-
-from config import HEIGHT, WIDTH, FPS, game, world_speed, TELA_INICIAL, QUIT, GAME
+from utils.insert_paths import insert_paths_for_game
+from utils.setup_pygame import setup
+insert_paths_for_game()
+from config import HEIGHT, WIDTH, FPS, TELA_INICIAL, QUIT, GAME
 from assets import load_assets
-pygame.init()
+
+setup()
 
 def tela_inicial(screen):
     clock = pygame.time.Clock()
