@@ -9,7 +9,6 @@ from utils.insert_paths import insert_paths_for_game
 
 insert_paths_for_game()
 img_dir = path.join(path.dirname(__file__), 'img')
-print(img_dir)
 BACKGROUND_IMG = 'background_img'
 from config import HEIGHT, WIDTH, FPS, TELA_FINAL, QUIT, GAME
 from assets import load_assets
