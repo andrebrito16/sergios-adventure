@@ -9,8 +9,6 @@ from config import FPS, GAME, HEIGHT, QUIT, TELA_FINAL, WIDTH, world_speed
 
 setup()
 
-img_dir = path.join(path.dirname(__file__), 'img')
-BACKGROUND_IMG = 'background_img'
 TELA = pygame.display.set_mode((WIDTH, HEIGHT))
 
 class Barrel(pygame.sprite.Sprite):

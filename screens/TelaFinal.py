@@ -8,9 +8,7 @@ from assets import load_assets
 
 setup()
 
-img_dir = path.join(path.dirname(__file__), 'img')
 TELA = pygame.display.set_mode((WIDTH, HEIGHT))
-BACKGROUND_IMG = 'background_img'
 
 def tela_final(screen):
     assets = load_assets()
