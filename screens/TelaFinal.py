@@ -2,8 +2,12 @@ import sys
 from os import path
 import pygame
 
-sys.path.insert(1, 'config')
-sys.path.insert(1, 'assets')
+# sys.path.insert(1, 'config')
+# sys.path.insert(1, 'assets')
+
+from utils.insert_paths import insert_paths_for_game
+
+insert_paths_for_game()
 img_dir = path.join(path.dirname(__file__), 'img')
 print(img_dir)
 BACKGROUND_IMG = 'background_img'
