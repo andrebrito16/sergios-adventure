@@ -1,18 +1,15 @@
 import random
-import sys
 from os import path
-
 import pygame
-
 from utils.insert_paths import insert_paths_for_game
-
 insert_paths_for_game()
-img_dir = path.join(path.dirname(__file__), 'img')
-BACKGROUND_IMG = 'background_img'
 from assets import load_assets
 from config import FPS, GAME, HEIGHT, QUIT, TELA_FINAL, WIDTH, world_speed
 
 pygame.init()
+
+img_dir = path.join(path.dirname(__file__), 'img')
+BACKGROUND_IMG = 'background_img'
 TELA = pygame.display.set_mode((WIDTH, HEIGHT))
 
 class Barrel(pygame.sprite.Sprite):
@@ -32,14 +29,13 @@ class Barrel(pygame.sprite.Sprite):
         if self.rect.x < -100:
             self.kill()
 
-        
-
 GROUND = HEIGHT * 5//6 - 30
 GRAVITY = 1.2
 JUMP_SIZE = 30
 STILL = 0
 JUMPING = 1
 FALLING = 2
+
 class Player(pygame.sprite.Sprite):
 
     def __init__(self, assets, posx):
@@ -57,14 +53,11 @@ class Player(pygame.sprite.Sprite):
         self.frame_ticks = 20
         self.speedy = 0
        
-    # Método update
     def update(self):
         now = pygame.time.get_ticks()
         elapsed_ticks = now - self.last_update
         if elapsed_ticks > self.frame_ticks:
-            # Marca o tick da nova imagem.
             self.last_update = now
-            # Avança um quadro.
             self.frame += 1
 
             if self.frame == len(self.player):
@@ -104,17 +97,11 @@ class Sheep(pygame.sprite.Sprite):
     def update(self):
         self.rect.centery = (random.randint(429, 439))
 
-    
-    
-
 all_sheep = pygame.sprite.Group()
 all_sprites = pygame.sprite.Group()
 all_barrels = pygame.sprite.Group()
 groups = {}
 groups['all_sprites'] = all_sprites 
-
-
-player_speedy = 10
 
 def tela_jogo(screen, lives):
     assets = load_assets()
@@ -125,7 +112,6 @@ def tela_jogo(screen, lives):
     pygame.mixer.music.play(loops = -1)
     score = 0
     
-    
     for counter in range(5):
         sheep = Sheep(assets, counter*20)
         all_sheep.add(sheep)
@@ -135,7 +121,6 @@ def tela_jogo(screen, lives):
     
     player = Player(assets, 250)
     all_sprites.add(player)
-    lista_sprites = [all_sprites]
     
     clock = pygame.time.Clock()
 
@@ -153,9 +138,7 @@ def tela_jogo(screen, lives):
             barrel_last.speedx = -(6+score*0.0025)
             all_barrels.add(barrel_last)
 
-        # ----- Trata eventos
         for event in pygame.event.get():
-            # ----- Verifica consequências
             if event.type == pygame.QUIT:
                 estado = QUIT
             if event.type == pygame.KEYDOWN:
@@ -184,16 +167,12 @@ def tela_jogo(screen, lives):
             player.kill()
         if score % 1000 == 0:
             lives += 1
-
-        # hits_barrel = pygame.sprite.spritecollide(barrel_last, all_barrels, True)
        
-        # Desenhando o score
         text_surface = assets['score_font'].render("{:08d}".format(score), True, (255, 255, 0))
         text_rect = text_surface.get_rect()
         text_rect.midtop = (WIDTH / 2,  10)
         TELA.blit(text_surface, text_rect)
 
-        # Desenhando as vidas
         text_surface = assets['score_font'].render(chr(9829) * lives, True, (255, 0, 0))
         text_rect = text_surface.get_rect()
         text_rect.bottomleft = (10, HEIGHT - 10)
@@ -206,9 +185,7 @@ def tela_jogo(screen, lives):
         all_barrels.draw(TELA)
         all_sheep.draw(TELA)
         pygame.display.update()
-        
+    
+        screen.fill((255, 255, 255))  
 
-        screen.fill((255, 255, 255))  # Preenche com a cor branca
-
-     
     return estado

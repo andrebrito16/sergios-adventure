@@ -1,22 +1,15 @@
-import sys
 from os import path
 import pygame
-
-# sys.path.insert(1, 'config')
-# sys.path.insert(1, 'assets')
-
 from utils.insert_paths import insert_paths_for_game
-
 insert_paths_for_game()
-img_dir = path.join(path.dirname(__file__), 'img')
-BACKGROUND_IMG = 'background_img'
 from config import HEIGHT, WIDTH, FPS, TELA_FINAL, QUIT, GAME
 from assets import load_assets
 
 pygame.init()
-TELA = pygame.display.set_mode((WIDTH, HEIGHT))
 
-player_speedy = 10
+img_dir = path.join(path.dirname(__file__), 'img')
+TELA = pygame.display.set_mode((WIDTH, HEIGHT))
+BACKGROUND_IMG = 'background_img'
 
 def tela_final(screen):
     assets = load_assets()
@@ -40,7 +33,6 @@ def tela_final(screen):
             estado = QUIT
           elif event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
             estado = GAME
-
 
         screen.fill((255, 255, 255)) 
         screen.blit(tela_final, background_rect) 

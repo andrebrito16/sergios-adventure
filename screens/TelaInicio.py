@@ -1,11 +1,9 @@
 import pygame
-
-
 from utils.insert_paths import insert_paths_for_game
-
 insert_paths_for_game()
 from config import HEIGHT, WIDTH, FPS, TELA_INICIAL, QUIT, GAME
 from assets import load_assets
+
 pygame.init()
 
 def tela_inicial(screen):
